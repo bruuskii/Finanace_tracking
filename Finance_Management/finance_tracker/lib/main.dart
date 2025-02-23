@@ -4,16 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
 import 'dart:ui';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'screens/welcome_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/insights_screen.dart';
 import 'screens/wallet_screen.dart';
 import 'screens/more_screen.dart';
 import 'screens/onboarding_screen.dart';
-import 'screens/login_screen.dart';
+
 import 'providers/account_provider.dart';
 import 'providers/currency_provider.dart';
 import 'providers/language_provider.dart';
@@ -30,16 +28,7 @@ void main() async {
     databaseFactory = databaseFactoryFfi;
   }
 
-  if (!Platform.isLinux) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  } else {
-    // For Linux, initialize Firebase with web config
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.web,
-    );
-  }
+
   
   runApp(const MyApp());
 }
@@ -79,27 +68,13 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
               useMaterial3: true,
             ),
-            home: StreamBuilder<User?>(
-              stream: FirebaseAuth.instance.authStateChanges(),
-              builder: (context, authSnapshot) {
-                if (authSnapshot.connectionState == ConnectionState.waiting) {
+            home: FutureBuilder<Widget>(
+              future: _getInitialScreen(context),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 }
-
-                if (!authSnapshot.hasData) {
-                  return const LoginScreen();
-                }
-
-                return FutureBuilder<Widget>(
-                  future: _getInitialScreen(context),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-
-                    return snapshot.data ?? const WelcomeScreen(isNewProfile: false);
-                  },
-                );
+                return snapshot.data ?? const WelcomeScreen(isNewProfile: false);
               },
             ),
           );
@@ -123,8 +98,7 @@ class MyApp extends StatelessWidget {
       return const MainNavigator();
     }
 
-    // Always show login screen first
-    return const WelcomeScreen(isNewProfile: false);
+    return const WelcomeScreen(isNewProfile: true);
   }
 }
 
