@@ -9,6 +9,7 @@ import 'welcome_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:finance_tracker/models/account.dart';
 import '../utils/number_formatter.dart';
+import 'package:finance_tracker/screens/purchase_screen.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key});
@@ -275,6 +276,189 @@ class MoreScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
+                      CupertinoListTile(
+                        leading: const Icon(
+                          CupertinoIcons.cart,
+                          color: Color(0xFF0A84FF),
+                          size: 28,
+                        ),
+                        title: const Text(
+                          'Purchase',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: const Icon(
+                          CupertinoIcons.chevron_right,
+                          color: Color(0xFF98989F),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => const PurchaseScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      Divider(
+                        indent: 16,
+                        endIndent: 16,
+                        height: 1,
+                        color: Colors.white.withOpacity(0.1),
+                      ),
+                      CupertinoListTile(
+                        leading: const Icon(
+                          CupertinoIcons.money_dollar,
+                          color: Color(0xFF0A84FF),
+                          size: 28,
+                        ),
+                        title: const Text(
+                          'Sale',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: const Icon(
+                          CupertinoIcons.chevron_right,
+                          color: Color(0xFF98989F),
+                        ),
+                        onTap: () {},
+                      ),
+                      Divider(
+                        indent: 16,
+                        endIndent: 16,
+                        height: 1,
+                        color: Colors.white.withOpacity(0.1),
+                      ),
+                      CupertinoListTile(
+                        leading: const Icon(
+                          CupertinoIcons.building_2_fill,
+                          color: Color(0xFF0A84FF),
+                          size: 28,
+                        ),
+                        title: const Text(
+                          'Immobilization',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: const Icon(
+                          CupertinoIcons.chevron_right,
+                          color: Color(0xFF98989F),
+                        ),
+                        onTap: () {},
+                      ),
+                      Divider(
+                        indent: 16,
+                        endIndent: 16,
+                        height: 1,
+                        color: Colors.white.withOpacity(0.1),
+                      ),
+                      CupertinoListTile(
+                        leading: const Icon(
+                          CupertinoIcons.money_dollar_circle,
+                          color: Color(0xFF0A84FF),
+                          size: 28,
+                        ),
+                        title: const Text(
+                          'Treasury',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: const Icon(
+                          CupertinoIcons.chevron_right,
+                          color: Color(0xFF98989F),
+                        ),
+                        onTap: () {},
+                      ),
+                      Divider(
+                        indent: 16,
+                        endIndent: 16,
+                        height: 1,
+                        color: Colors.white.withOpacity(0.1),
+                      ),
+                      CupertinoListTile(
+                        leading: const Icon(
+                          CupertinoIcons.person_2,
+                          color: Color(0xFF0A84FF),
+                          size: 28,
+                        ),
+                        title: const Text(
+                          'Personnel',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: const Icon(
+                          CupertinoIcons.chevron_right,
+                          color: Color(0xFF98989F),
+                        ),
+                        onTap: () {},
+                      ),
+                      Divider(
+                        indent: 16,
+                        endIndent: 16,
+                        height: 1,
+                        color: Colors.white.withOpacity(0.1),
+                      ),
+                      CupertinoListTile(
+                        leading: const Icon(
+                          CupertinoIcons.group,
+                          color: Color(0xFF0A84FF),
+                          size: 28,
+                        ),
+                        title: const Text(
+                          'Subcontractors',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: const Icon(
+                          CupertinoIcons.chevron_right,
+                          color: Color(0xFF98989F),
+                        ),
+                        onTap: () {},
+                      ),
+                      Divider(
+                        indent: 16,
+                        endIndent: 16,
+                        height: 1,
+                        color: Colors.white.withOpacity(0.1),
+                      ),
+                      CupertinoListTile(
+                        leading: const Icon(
+                          CupertinoIcons.cube_box,
+                          color: Color(0xFF0A84FF),
+                          size: 28,
+                        ),
+                        title: const Text(
+                          'Stock',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: const Icon(
+                          CupertinoIcons.chevron_right,
+                          color: Color(0xFF98989F),
+                        ),
+                        onTap: () {},
+                      ),
+                      Divider(
+                        indent: 16,
+                        endIndent: 16,
+                        height: 1,
+                        color: Colors.white.withOpacity(0.1),
+                      ),
+                      CupertinoListTile(
+                        leading: const Icon(
+                          CupertinoIcons.ellipsis_circle,
+                          color: Color(0xFF0A84FF),
+                          size: 28,
+                        ),
+                        title: const Text(
+                          'Others',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: const Icon(
+                          CupertinoIcons.chevron_right,
+                          color: Color(0xFF98989F),
+                        ),
+                        onTap: () {},
+                      ),
+                      Divider(
+                        indent: 16,
+                        endIndent: 16,
+                        height: 1,
+                        color: Colors.white.withOpacity(0.1),
+                      ),
                       CupertinoListTile(
                         leading: const Icon(
                           CupertinoIcons.person_crop_circle,
